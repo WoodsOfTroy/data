@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="dd.mm.yyyy" maxlength="10" onkeydown="keydown(event)">
+    <span id="warning"></span>
+    <script>
+        function keydown(event){
+            let val = event.target.value;
+            let span = document.getElementById("warning");
+            if(val.length == 2 || val.length == 5)
+            {
+                event.target.value += `.`;
+            }
+            let day = event.target.value.slice(0, 3);
+            let month = event.target.value.slice(3, 5);
+            let year = event.target.value.slice(6, 10);
+            if(day > 31 || month > 12 || day == "" || month == "" || year == "")
+            {
+                span.textContent = "Введите корректный формат даты";
+            }
+        }
+        
+    </script>
+</body>
+</html>
